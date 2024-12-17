@@ -1,0 +1,54 @@
+
+<launch>
+  <arg name="tracking_mode" default="press"/>
+  <arg name="sim" default="true"/>
+  <arg name="record" default="false"/>
+  <arg name="rviz" default="true"/>
+
+
+
+  <node pkg="vive_teleop" type="vive_teleop_pid.py" name="vive_teleop" output="screen" args="$(arg sim)">
+  </node>
+
+  <node pkg="vive_teleop" type="modified_tiago_arm_position_control_fall.py" name="right_arm_position_control" output="screen" args="right $(arg sim)" >
+  </node>
+
+  <node pkg="vive_teleop" type="vive_pose_mapping.py" name="vive_pose_mapping_right" output="screen" args="right $(arg tracking_mode)">
+  </node>
+
+  <node pkg="vive_teleop" type="ee_publisher.py" name="ee_checker_right" output="screen" args="right">
+  </node>
+
+  <node pkg="vive_teleop" type="keyboard_rrt_control.py" name="keyboard_rrt_right" output="screen" args="right">
+  </node>
+
+  <node pkg="vive_teleop" type="tiago_arm_position_control.py" name="left_arm_position_control" args="left $(arg sim)">
+  </node>
+
+  <node pkg="vive_teleop" type="vive_pose_mapping.py" name="vive_pose_mapping_left" output="screen" args="left $(arg tracking_mode)">
+  </node>
+
+  <node pkg="vive_teleop" type="ee_publisher.py" name="ee_checker_left" output="screen" args="left">
+  </node>
+
+  <node pkg="vive_teleop" type="tool_broadcast.py" name="broadcast_both" output="screen">
+  </node>
+
+  <group ns="torso_controller" if="$(arg sim)">
+    <node pkg="vive_teleop" type="incrementer_server.py" name="torso_incrementer"/>
+  </group>
+
+
+
+  <include file="$(find vive_teleop)/launch/autograb.launch"/>
+
+
+  <group if="$(arg record)">
+    <node pkg="vive_teleop" type="data_recorder_fall.py" name="data_recorder"/>
+  </group>
+
+  <group if="$(arg rviz)">
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find vive_teleop)/config/teleop_eval.rviz" />
+  </group>
+
+</launch>
