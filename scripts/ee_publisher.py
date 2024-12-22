@@ -12,7 +12,7 @@ Controller mapping:
     /Left_Buttons menu button -> home left arm
     /Left_Buttons squeeze button -> activate left arm
 
-Author: Juo-Tung Chen
+Author: Yichen Xie
 
 
 """
