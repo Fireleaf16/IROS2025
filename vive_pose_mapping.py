@@ -3,7 +3,7 @@
 This script is used for mapping the HTC vive controller pose to the robot arm
 
 
-Author: Juo-Tung Chen
+Author: Yichen Xie
 """
 import sys
 
