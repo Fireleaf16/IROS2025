@@ -1,0 +1,66 @@
+<launch>
+    <!-- wall -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_shelf_left_3" args="-0.425 0.95 0.72 0.0 0.0 0.0 1.0 odom shelf_left_3"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_shelf_left_2" args="-0.425 0.95 0.37 0.0 0.0 0.0 1.0 odom shelf_left_2"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_shelf_left_4" args="-0.425 0.95 1.07 0.0 0.0 0.0 1.0 odom shelf_left_4"/>
+
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_right_wall" args="0.265 -1.1 1.107 0.0 0.0 0.0 1.0 odom right_wall"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_left_wall" args="0.0 1.25 0.772 0.0 0.0 0.0 1.0 odom left_wall"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_front_desk" args="1.31 0.0 0.7 0.0 0.0 0.0 1.0 odom front_desk"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_front_desk2" args="1.31 0.3 0.7 0.0 0.0 0.0 1.0 odom front_desk2"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_back_desk" args="-0.86 0 0.42 0.0 0.0 0.0 1.0 odom back_desk"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_right_back_desk" args="-0.85 -0.71 0.62 0.0 0.0 0.0 1.0 odom right_back_desk"/>
+
+
+    <!-- object -->
+    <!--task1 -->
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task1_orange_can" args="1.36 0.62 0.75 0.0 0.0 0.0 1.0 odom task1_orange_can"/-->
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task1_orange_can" args="1.36 -0.52 0.75 0.0 0.0 0.0 1.0 odom task1_orange_can"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task1_basket_target" args="1.65 0.0 0.82 0.0 0.0 0.0 1.0 odom task1_basket_target"/>
+
+    <!--task2 -->
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task2_orangle" args="-0.47 1.02 0.72 0.0 0.0 0.0 1.0 odom task2_orangle"/-->
+
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task2_yellow" args="-0.31 1.02 0.72 0.0 0.0 0.0 1.0 odom task2_yellow"/-->
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task2_lower" args="-0.415 1.02 0.37 0.0 0.0 0.0 1.0 odom task2_lower"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task2_upper" args="-0.415 1.02 1.07 0.0 0.0 0.0 1.0 odom task2_upper"/>
+
+    <!--task3 -->
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task3_candy" args="1.35 0.0 0.75 0.0 0.0 0.0 1.0 odom task3_candy"/-->
+    
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task3_candy_target" args="0.9 -0.8 0.2 0.0 0.0 0.0 1.0 odom task3_candy_target"/-->
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task3_blue" args="1.35 -0.15 0.75 0.0 0.0 0.0 1.0 odom task3_blue"/>
+    
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task3_blue_target" args="0.02 1.02 0.1 0.0 0.0 0.0 1.0 odom task3_blue_target"/>
+
+    <!--task4 -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task4_candy" args="1.35 0.0 0.75 0.0 0.0 0.0 1.0 odom task4_candy"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task4_clothes" args="-1.05 0 0.42 0.0 0.0 0.0 1.0 odom task4_clothes"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task4_can" args="-0.88 -0.76 0.63 0.0 0.0 0.0 1.0 odom task4_can"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task4_clothes_target" args="0.9 -0.8 0.2 0.0 0.0 0.0 1.0 odom task4_clothes_target"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task4_can_target" args="-0.41 1.02 0.72 0.0 0.0 0.0 1.0 odom task4_can_target"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_task4_candy_target" args="0.86 1.27 0.95 0.0 0.0 0.0 1.0 odom task4_candy_target"/>
+
+
+
+
+
+</launch>
