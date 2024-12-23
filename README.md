@@ -35,26 +35,24 @@ We only use `ui_baseline.py` for the auto grabbing mode.
 
 - `ui_baseline.py` adds obstacle warnings, obstacle frames and robot's end-effector and elbow current location with respect to the base frame (torso_lift_link). 
 
-- For usage, in you workspace `python3 ui_baseline.py/ui_ego.py`. Remember to connect to the Unity first.
+- For usage, in you workspace `python3 ui_baseline.py`. Remember to connect to the Unity first.
 
 ## Scripts overview
 
 This section brefly illustrates the function of each `.py` in folder `scripts`, for more detail information please read the comments within each file.
 
-- `data_recorder_continue.py` record controller data, robot frame data, robot to target data and all the triggered warnings.
-
 - `ee_publisher.py` original file that only publish the warning whether robot end-effector with respect to the robot base frame is too large.
+
+- `keyboard_rrt_control.py` utilize keyboard to select the current control mode and select the target.
+
+- `tiago_arm_planning` implement the RRT control for robot end effector and improved it by adding specific constraints such as samples must within certain workspace and orientation must be the same as the target orientation which is pre-defined for grabbing.
 
 - `ee_publisher_fall.py` new version of tracking all the updated warnings including `arm_above_desk` which will freeze the torso from going down (up and down if task is shelf). `arm_move_collsion` which will freeze the base if arm is too close to the obstacle. `arm_next_target_collision` which will freeze the arm moving if it detects the user next move will hit the obstacle. And all the boundary warnings.
 
 - `vive_pose_mapping.py` the old version that maps all the user movement to the robot end effector.
 
-- `vive_pose_mapping_continue.py` the second version that maps all the user movement to the robot end effector and if the arm reaches the boundary, the arm will stop moving.
-
 - `vive_pose_mapping_fall.py` the latest version that maps all the user movement to the robot end effector and if the arm reaches the boundary, it will stop moving across the boundary but can rotate and sliding along the boundary.
 
-- `vive_teleop_continue.py` the base, torso, head control for the `combine` method.
-
-- `vive_teleop_continue_notouchpad.py` the base, torso, head control for the `egocentric` method.
+- `vive_teleop_pid.py` the updated verison for basic control, allows the automatical adjustment for torso height, base movement and rotation.
 
 - `vive_teleop_v2.py` the base, torso, head control for the `base` method.
