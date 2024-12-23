@@ -47,6 +47,8 @@ This section brefly illustrates the function of each `.py` in folder `scripts`, 
 
 - `tiago_arm_planning` implement the RRT control for robot end effector and improved it by adding specific constraints such as samples must within certain workspace and orientation must be the same as the target orientation which is pre-defined for grabbing.
 
+- `tool_broadcast.py` broadcast a new frame that locates at the center of the gripper.
+
 - `ee_publisher_fall.py` new version of tracking all the updated warnings including `arm_above_desk` which will freeze the torso from going down (up and down if task is shelf). `arm_move_collsion` which will freeze the base if arm is too close to the obstacle. `arm_next_target_collision` which will freeze the arm moving if it detects the user next move will hit the obstacle. And all the boundary warnings.
 
 - `vive_pose_mapping.py` the old version that maps all the user movement to the robot end effector.
