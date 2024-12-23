@@ -4,7 +4,7 @@ Version1
 
 ## Features
 
-This is for IROS2025. There are three modes for the egocentric control: `baseline` `egocentric` `Combine`. 
+This is for IROS2025. This is for automatical grabbing purposes.
 
 - The `baseline` inherits the previous control method but with obstacle avoidance and with updated fuzzy control for base control. The robot end-effectors will strictly follow the user's arm movement unless it detects that the user's movement will lead to collision with existing obstacles. In that case, it will erase the direction that may cause collision but carry on other directions.(For example, if the robot end-effectors is above the task, and user is trying to grab a bottle on the table. The end-effector will stop move downward(in z direction) but will allow user to move in planar(XY directions) 
 
@@ -24,9 +24,9 @@ cd Tiago_dual_robot
 source devel/setup.bash
 ```
 
-To activate the `baseline`, use the following code:
+To activate the program, use the following code:
 
-`roslaunch vive_teleop vive_teleop_fall.launch sim=false record=false rviz=true`
+`roslaunch vive_teleop vive_teleop_iros.launch sim=false record=false rviz=true`
 
 To activate the `egocentric`, use the following code:
 
