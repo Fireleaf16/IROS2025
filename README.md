@@ -4,13 +4,13 @@ Version1
 
 ## Features
 
-This is for IROS2025. This is for automatical grabbing purposes.
+This is for IROS2025. This is for automatical grabbing purposes within distances. It can be mainly divided into three parts of control: `arm_control`,`torso_control` and `base_control`
 
-- The `baseline` inherits the previous control method but with obstacle avoidance and with updated fuzzy control for base control. The robot end-effectors will strictly follow the user's arm movement unless it detects that the user's movement will lead to collision with existing obstacles. In that case, it will erase the direction that may cause collision but carry on other directions.(For example, if the robot end-effectors is above the task, and user is trying to grab a bottle on the table. The end-effector will stop move downward(in z direction) but will allow user to move in planar(XY directions) 
+- The `arm_control` inherits the previous control method but but now add additional control strategy. Through keyboard, the user can now adjust pick up mode (RRT-based-autograb/teleop) and adjust pick and place target. When the autograb mode is selected and the target locates within the robot end-effector workspace, it will first deploy improved RRT planning to get the path and then activate the path through rapid IK solver. To be noticed, the arm_control will only be activated once the robot is in optimal grabbing locations, meaning that it will face towards the target, be close enough and at proper height.
 
-- The `egocentric` is the novel control method also called `notouchpad` method which presented in the paper. It abandons the tradition key-press control. Instead, it allows the user to control the entire robot only use arm movement and head rotation. To be more specific, for the arm control, there exists a workspace for the arm which is calculated through maneuverability. In which, it guarantees that no collisions with other part and no singularity. When the robot end-effectors are within the workspace, it strictly follows the user's arm movement. However, when the robot end-effectors hit the boundary, depending on which boundary it hits, the robot will adjust base or torso. Similarly, the head can also control the base rotation and torso up/down movement Safety 
+- The `torso_control` is directly achieved through the torso command line. When autograb mode is selected, and when the target locates out of the workspace in z direction. The robot will automatically calculate the difference bewteen the height between the target and the original arm_home_place. And send the result to the torso command line which decides whether the torso will goes up or down that amout of result.
 
-- The `Combine` allows the users to access the both above control method, which means the robot end-effectors will remain in the workspace and will activate base and torso control when hit the boundary while the user can also control the base and torso through key-pressing.
+- The `base_control` implements the PID control for rotation and transition. To be more specific, when the target is out of the workspace in XY direction or existing a large gap between the current orientaion of the robot, it will trigger the robot base control. The robot will firstly adjust its orientation towards the target using PID control and then move close enough to the target waiting to pick up. It should be mentioned that the order in this case really matters as the XY-speed command given to the robot is in robot-frame, not in world/odom frame.
 
 
 ## Usage
@@ -28,29 +28,18 @@ To activate the program, use the following code:
 
 `roslaunch vive_teleop vive_teleop_iros.launch sim=false record=false rviz=true`
 
-To activate the `egocentric`, use the following code:
-
-`roslaunch vive_teleop vive_teleop_continue_notouchpad.launch sim=false record=false rviz=true`
-
-To activate the `combine`, use the followwing code:
-
-`roslaunch vive_teleop vive_teleop_continue_fall.launch sim=false record=false rviz=true`
 
 ## UI
 
-There exists two forms of UI. The `ui_baseline.py` is for the `baseline` method and `ui_ego` is for the `egocentric` and `combine` method.
+We only use `ui_baseline.py` for the auto grabbing mode.
 
 - `ui_baseline.py` adds obstacle warnings, obstacle frames and robot's end-effector and elbow current location with respect to the base frame (torso_lift_link). 
-
-- `ui_ego.py` besides everything above, it adds the boundary for the workspace and warnings for arm reaches the boundaries.
 
 - For usage, in you workspace `python3 ui_baseline.py/ui_ego.py`. Remember to connect to the Unity first.
 
 ## Scripts overview
 
 This section brefly illustrates the function of each `.py` in folder `scripts`, for more detail information please read the comments within each file.
-
-- `rand.py` gives a random series contains 1-6, which decides the user's task order.
 
 - `data_recorder_continue.py` record controller data, robot frame data, robot to target data and all the triggered warnings.
 
