@@ -3,7 +3,7 @@ This python codes with scripts and launch files to control the Tiago++ robot wit
 
 ## Features
 
-This is for ICRA2025. There are three modes for the egocentric control: `Baseline` `Egocentric` `Combine`. 
+This is for IROS2025. There are three modes for the egocentric control: `Baseline` `Egocentric` `Combine`. 
 
 - The `Baseline` inherits the previous control method but with obstacle avoidance and with updated fuzzy control for base control. The robot end-effectors will strictly follow the user's arm movement unless it detects that the user's movement will lead to collision with existing obstacles. In that case, it will erase the direction that may cause collision but carry on other directions.(For example, if the robot end-effectors is above the task, and user is trying to grab a bottle on the table. The end-effector will stop move downward(in z direction) but will allow user to move in planar(XY directions) 
 
